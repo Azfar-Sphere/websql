@@ -26,3 +26,12 @@ db.transaction(t =>
     }
 
 }, e => console.error(e));
+
+db.transaction( t =>
+{
+    t.executeSql('SELECT g.name, SUM(g.price*s.amount) total FROM gems g' +
+    'INNER JOIN store s ON g.name = s.gem GROUP BY 1', [],
+    (t, result) => console.log(result.rows)
+    );
+
+});
