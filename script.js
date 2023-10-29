@@ -1,3 +1,5 @@
+console.log("test");
+
 const gems = [
     {name: 'ruby', price: 10},
     {name: 'emerald', price: 20},
@@ -22,7 +24,7 @@ db.transaction(t =>
 
     for (let s of store) 
     {
-        t.executeSql('INSERT INTO store (name, amount) VALUES (?, ?)', [s.gem, s.amount]);  
+        t.executeSql('INSERT INTO store (gem, amount) VALUES (?, ?)', [s.gem, s.amount]);  
     }
 
 }, e => console.error(e));
